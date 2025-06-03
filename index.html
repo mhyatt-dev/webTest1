@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      transition: background-color 0.2s linear;
+    }
+
+    header {
+      background-color: #333;
+      padding: 10px;
+      text-align: right;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      background-color: #555;
+      border-radius: 4px;
+    }
+
+    header a:hover {
+      background-color: #777;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    /* Floating Text Box */
+    #floatingBox {
+      position: fixed;
+      top: 100px;
+      right: 20px;
+      width: 250px;
+      background-color: #f1f1f1;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+
+    #floatingBox button#closeBtn {
+      background: none;
+      border: none;
+      font-size: 18px;
+      font-weight: bold;
+      color: #999;
+      float: right;
+      cursor: pointer;
+    }
+
+    #floatingBox button#closeBtn:hover {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="about.html">About Us</a>
+  </header>
+
+  <div class="content">
+    <h1>Welcome to My Website</h1>
+    <h2>Your go-to place for awesome content</h2>
+    <p>This is the home page. Stay tuned for more updates!</p>
+    <!-- Filler text to allow scrolling -->
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <p style="margin-bottom: 3000px;">Scroll down to see the background color gradually shift to light gray.</p>
+  </div>
+
+  <!-- Floating Text Box -->
+  <div id="floatingBox">
+    <button id="closeBtn">&times;</button>
+    <p>This is a floating message box. You can add any info here!</p>
+  </div>
+
+  <script>
+    // Close floating box
+    document.getElementById("closeBtn").addEventListener("click", function () {
+      document.getElementById("floatingBox").style.display = "none";
+    });
+
+    // Scroll-based background color
+    window.addEventListener("scroll", function () {
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const scrollPercent = docHeight > 0 ? scrollTop / docHeight : 0;
+
+      // Interpolate between white (255) and light gray (230)
+      const value = 255 - Math.round(scrollPercent * 25); // 255 → 230
+      document.body.style.backgroundColor = `rgb(${value}, ${value}, ${value})`;
+    });
+  </script>
+</body>
+</html>
