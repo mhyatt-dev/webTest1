@@ -80,6 +80,7 @@
   <div id="floatingBox">
     <button id="closeBtn">&times;</button>
     <p>This is a floating message box. You can add any info here!</p>
+    <p>Background Gray Level: <span id="grayValue">255</span></p>
   </div>
 
   <script>
@@ -95,7 +96,7 @@
       const scrollPercent = docHeight > 0 ? scrollTop / docHeight : 0;
 
       // Interpolate between white (255) and light gray (230)
-      const value = 255 - Math.round(scrollPercent * 25); // 255 → 230
+      const value = 255 - Math.round(scrollPercent * 75); // 255 → 180
       document.body.style.backgroundColor = `rgb(${value}, ${value}, ${value})`;
     });
   </script>
